@@ -9,14 +9,14 @@ resource "aws_instance" "Ansible-clients" {
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = true
   tags = {
-    Name        = "Ansible-client-${count.index+1}"
+    Name        = "Ansible-client-${count.index + 1}"
     Deployed_by = local.Deployed_by
     owner       = local.owner
     costcenter  = local.costcenter
     TeamDL      = local.TeamDL
     environment = "${var.environment}"
   }
-user_data = <<-EOF
+  user_data = <<-EOF
 #! /bin/bash
 sudo su - 
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
