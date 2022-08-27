@@ -1,14 +1,13 @@
 
 resource "aws_instance" "Ansible-clients" {
   #count                       = length(var.public_cidr_block)
-  count                       = 1
+  count                       = 2
   ami                         = lookup(var.amis, var.aws_region)
   instance_type               = var.instance_type
   key_name                    = var.key_name
   subnet_id                   = element(aws_subnet.public-subnets.*.id, count.index)
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = true
-  iam_instance_profile        = aws_iam_instance_profile.ec2_admin.name
   tags = {
     Name        = "Ansible-client-${count.index+1}"
     Deployed_by = local.Deployed_by
