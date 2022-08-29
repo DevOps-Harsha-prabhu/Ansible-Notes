@@ -1,7 +1,7 @@
 
-resource "aws_instance" "Ansible-clients" {
+resource "aws_instance" "Ansible-clients-2" {
   #count                       = length(var.public_cidr_block)
-  count                       = 2
+  count                       = 1
   ami                         = lookup(var.amis, var.aws_region)
   instance_type               = var.instance_type
   key_name                    = var.key_name
@@ -9,7 +9,7 @@ resource "aws_instance" "Ansible-clients" {
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = true
   tags = {
-    Name        = "Ansible-client-${count.index + 1}"
+    Name        = "Ansible-client-2"
     Deployed_by = local.Deployed_by
     owner       = local.owner
     costcenter  = local.costcenter
