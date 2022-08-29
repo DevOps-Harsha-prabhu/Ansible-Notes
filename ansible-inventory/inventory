@@ -1,0 +1,4 @@
+[allservers]
+localhost              ansible_connection=local
+34.229.217.201         ansible_connection=ssh        ansible_user=ansadmin   ansible_port=22 
+3.85.139.244           ansible_connection=ssh        ansible_user=ansadmin   ansible_port=22
