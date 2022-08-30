@@ -1,10 +1,19 @@
-[allservers]
-localhost                              ansible_connection=local
-server1 ansible_host=3.85.167.110      ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
-server2 ansible_host=54.147.175.223    ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
+[docker_servers]
+Docker-swarm-master-0        ansible_host=34.224.97.34   ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
+Docker-swarm-master-1        ansible_host=3.88.166.93    ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
+Docker-swarm-master-2        ansible_host=52.87.195.66   ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
+Docker-swarm-workder-nodes-1 ansible_host=54.242.94.226  ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
+Docker-swarm-workder-nodes-2 ansible_host=54.166.160.207 ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
+Docker-swarm-workder-nodes-3 ansible_host=3.91.3.243     ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
 
-[webservers]
-server1 ansible_host=3.85.167.110      ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
+[docker_master]
+Docker-swarm-master-0        ansible_host=34.224.97.34   ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
 
-[appservers]
-server2 ansible_host=54.147.175.223    ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
+[docker_managers]
+Docker-swarm-master-1        ansible_host=3.88.166.93    ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
+Docker-swarm-master-2        ansible_host=52.87.195.66   ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
+
+[docker_workers]
+Docker-swarm-workder-nodes-1 ansible_host=54.242.94.226  ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22
+Docker-swarm-workder-nodes-2 ansible_host=54.166.160.207 ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22 
+Docker-swarm-workder-nodes-3 ansible_host=3.91.3.243     ansible_connection=ssh     ansible_user=ansadmin   ansible_port=22

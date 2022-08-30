@@ -1,4 +1,4 @@
----
+--- 
   - name: Install Docker and Configure Docker Swarm
     hosts: docker_servers
     become: yes
@@ -14,6 +14,7 @@
           var: version
     tags:
      - install
+
 
   - name: Enable Docker Swarm
     hosts: docker_master
@@ -60,6 +61,8 @@
     tags:
      - swarm
 
+
+
   - name: Add Workers to Swarm
     hosts: docker_workers
     become: yes
@@ -78,6 +81,8 @@
     tags:
      - workers
 
+
+
   - name: Add Managers to Swarm
     hosts: docker_managers
     become: yes
@@ -95,6 +100,10 @@
         ignore_errors: yes
     tags:
      - managers
+
+
+
+     
   - name: Deploy Test Application
     hosts: docker_master
     become: yes
