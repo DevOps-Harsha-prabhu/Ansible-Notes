@@ -1,0 +1,11 @@
+  - name: Deploy Test portainer 
+    hosts: docker_master
+    become: yes
+    become_user: root
+    tasks:
+      - name: fetch nginx access log (absolute)
+        fetch:
+          src: /var/log/nginx/access.log
+          dest: /path/to/ansible/fetched/absolute
+          flat: yes
+          # will download the file only but dont create the client folder and path. 

@@ -1,0 +1,13 @@
+  - name: Deploy Test visualizer
+    hosts: docker_master
+    become: yes
+    become_user: root
+    tasks:
+      - name: stop visualizer if it is present. 
+        shell: docker stop visualizer
+        ignore_errors: yes
+      - name: remove visualizer if it is present. 
+        shell: docker rm visualizer
+        ignore_errors: yes
+    tags:
+     - managers

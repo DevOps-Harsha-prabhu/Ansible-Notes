@@ -1,0 +1,11 @@
+  - name: Deploy Test portainer 
+    hosts: docker_master
+    become: yes
+    become_user: root
+    tasks:
+      - name: remove portainer service if it is present. 
+        shell: |
+          docker service rm portainer_agent
+          docker service rm portainer_portainer       
+    tags:
+     - managers

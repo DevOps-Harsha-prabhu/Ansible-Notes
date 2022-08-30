@@ -1,0 +1,18 @@
+  - name: Deploy Test portainer 
+    hosts: docker_master
+    become: yes
+    become_user: root
+    tasks:
+      - name: remove portainer service if it is present. 
+        shell: |
+          docker service rm portainer_agent
+          docker service rm portainer_portainer
+        ignore_errors: yes          
+      - name: deploy portainer.  
+        shell: |
+          cd /opt
+          curl -L https://downloads.portainer.io/portainer-agent-stack.yml -o portainer-agent-stack.yml
+          docker stack deploy -c portainer-agent-stack.yml portainer
+        ignore_errors: yes        
+    tags:
+     - managers

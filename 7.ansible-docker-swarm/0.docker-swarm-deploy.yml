@@ -75,6 +75,9 @@
           var: token
       - debug:
           var: private_ip
+    #  - name: if it is already part of a swarm then leave. 
+    #    shell: docker swarm leave
+    #    ignore_errors: yes    
       - name: Add Workers to Swarm
         shell: docker swarm join --token "{{ token }}" "{{ private_ip }}":2377
         ignore_errors: yes
@@ -95,6 +98,9 @@
           var: token
       - debug:
           var: private_ip
+      #- name: if it is already part of a swarm then leave. 
+      #  shell: docker swarm leave
+      #  ignore_errors: yes           
       - name: Add Managers to Swarm
         shell: docker swarm join --token "{{ token }}" "{{ private_ip }}":2377
         ignore_errors: yes
@@ -103,7 +109,7 @@
 
 
 
-     
+
   - name: Deploy Test Application
     hosts: docker_master
     become: yes
@@ -117,8 +123,11 @@
       - debug:
           var: private_ip
       - name: Deploy Sample Application
-        shell: docker service rm nginx002 && docker service create --name nginx002 -p 8000:80 --replicas 6 sreeharshav/rollingupdate:v5
+        shell: docker service rm nginx002
         ignore_errors: yes
+      - name: Deploy Sample Application
+        shell: docker service create --name nginx002 -p 8000:80 --replicas 6 sreeharshav/rollingupdate:v5
+        ignore_errors: yes        
       - name: Validate Deployment
         shell: sleep 10 && curl http://"{{ private_ip.stdout }}":8000
         register: html
