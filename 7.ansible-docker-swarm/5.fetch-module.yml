@@ -9,3 +9,4 @@
           dest: /path/to/ansible/fetched/absolute
           flat: yes
           # will download the file only but dont create the client folder and path. 
+ 

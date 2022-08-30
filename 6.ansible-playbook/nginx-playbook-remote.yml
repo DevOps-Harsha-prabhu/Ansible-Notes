@@ -16,7 +16,9 @@
            - update
 
        - name: Clone Git Repo
-         shell: cd /tmp && git clone https://github.com/DevOps-Harsha/Ansible-Notes.git
+         shell: |
+           cd /tmp 
+           git clone https://github.com/DevOps-Harsha/Ansible-Notes.git
          tags:
            - clone
 
