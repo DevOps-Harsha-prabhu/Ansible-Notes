@@ -1,6 +1,6 @@
 ---
   - name: Play for Install Nginx on WebServers
-    hosts: webservers:appservers:dbservers
+    hosts: webservers:appservers
     gather_facts: yes #yes or no
     become: yes
     become_user: root
@@ -16,7 +16,7 @@
            - update
 
        - name: Clone Git Repo
-         shell: cd /tmp && git clone -b DevOpsB24-Dev https://github.com/mavrick202/dockertest1.git
+         shell: cd /tmp && git clone https://github.com/DevOps-Harsha/Ansible-Notes.git
          tags:
            - clone
 

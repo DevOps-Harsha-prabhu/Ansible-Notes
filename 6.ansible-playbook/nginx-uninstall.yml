@@ -1,0 +1,14 @@
+---
+  - name: Play for Install Nginx on WebServers
+    hosts: webservers:appservers
+    gather_facts: yes #yes or no
+    become: yes
+    become_user: root
+    tasks:
+       - name: stop nginx
+         service:
+             name: nginx
+             state: stopped
+       - name: ensure nginx is not installed
+         apt: name=nginx state=absent 
+
